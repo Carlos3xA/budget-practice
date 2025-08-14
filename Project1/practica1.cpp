@@ -3,6 +3,6 @@ using namespace std;
 
 int main() {
 	cout << "Hola mundo";
-	cout << "\nHoy es miercoles";
+	cout << "\nmanana es jueves";
 	return 0;
 }
