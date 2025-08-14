@@ -32,6 +32,15 @@ BudgetMatrix::~BudgetMatrix() {
     delete[] data;
 }
 
+void BudgetMatrix::setBudget(const double* budgets) {
+    for (int i = 0; i < rows; ++i) {
+        int blockStart = 0;
+        data[i][0] = budgets[blockStart];     
+        data[i][1] = budgets[blockStart + 1 + i];
+        data[i][2] = data[i][0] - data[i][1];   
+    }
+}
+
 int main() {
    
 
