@@ -219,9 +219,99 @@ int preguntados() {
 	return contador;
 }
 
-int main() {
-	cout << preguntados();
 
+bool algoritmoDeLuhn(int targeta[], int tamano) {
+	//primera parte
+	cout << "Ingrese los numeros de su tarjeta uno por uno:" << endl;
+	for (int i = 0; i < tamano; i++) {
+		do {
+			cout << "#" << i + 1 << ": ";
+			cin >> targeta[i];
+		} while (targeta[i]>=10 || targeta[i] < 0);
+		
+	}
+
+	int primer [8] = { 0 };
+	int j = 0;
+
+	for (int i = tamano - 2; i >= 0 && j < 8; i -=2 ) {
+		primer[j] = targeta[i];
+		j++;
+	}
+
+	for (int i = 0; i < 8; i++) {
+		primer[i] = primer[i] * 2;
+	}
+
+
+	int segundo[16] = {0};
+	int k=0;
+	int aux = 0;
+	for (int i = 0; i < 8; i++) {
+		if (primer[i] > 9) {
+			aux = primer[i] % 10;
+			segundo[k] = primer[i]/10;
+			segundo[k + 1] = aux;
+			k += 2;
+		}
+		else {
+			segundo[k] = primer[i];
+			k++;
+		}
+	}
+
+	int primeraSuma = 0;
+	for (int i = 0; i < 16; i++) {
+		primeraSuma += segundo[i];
+	 }
+	
+	//segunda parte
+	int primer2[8] = { 0 };
+	int j2 = 0;
+
+	for (int i = tamano - 1; i >= 1 && j2 < 8; i -= 2) {
+		primer2[j2] = targeta[i];
+		j2++;
+	}
+
+	int segundo2[16] = { 0 };
+	int k2 = 0;
+	int aux2 = 0;
+	for (int i = 0; i < 8; i++) {
+		if (primer2[i] > 9) {
+			aux2 = primer2[i] % 10;
+			segundo2[k2] = primer2[i] / 10;
+			segundo2[k2 + 1] = aux2;
+			k2 += 2;
+		}
+		else {
+			segundo2[k2] = primer2[i];
+			k2++;
+		}
+	}
+
+	int segundaSuma = 0;
+	for (int i = 0; i < 16; i++) {
+		segundaSuma += segundo2[i];
+	}
+	
+	int sumaTotal= primeraSuma + segundaSuma;
+
+	if (sumaTotal % 10 == 0) return true;
+	else return false;
+}
+
+int main() {
+	int tarjeta[16];
+	int tamano = sizeof(tarjeta) / sizeof(tarjeta[0]);
+
+	if (algoritmoDeLuhn(tarjeta, tamano)) {
+		cout << "La tarjeta es valida";
+	}
+	else cout << "La tarjeta es invalida";
+
+	//4126 9428 8307 9448
+	
 
 	cin.get();
 	return 0;
