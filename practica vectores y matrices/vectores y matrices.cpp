@@ -330,23 +330,10 @@ void parcticaDememoriaDinamica() {
 }
 
 int main() {
-	int* pNumero = NULL;;
-	int numero[4] = { 1,2,3,4 };
-	pNumero = numero;
-	int tamano = sizeof(numero);
-	int suma=0;
-	
-	
-	for (int i = 0; i<4; i++) {
-		
-		cout << *pNumero<<endl;
-		pNumero+=1;
-	}
-for (int i = 0; i < tamano; i ++) {
-		pNumero += i;
-		suma += sizeof * (pNumero);
-	}
-
+	int arreglo[3] = { 0,1,2 };
+	int* p = NULL;
+	p = &arreglo[2];
+	cout << p[0];
 	cin.get();
 	return 0;
 }
