@@ -295,23 +295,57 @@ bool algoritmoDeLuhn(int targeta[], int tamano) {
 		segundaSuma += segundo2[i];
 	}
 	
-	int sumaTotal= primeraSuma + segundaSuma;
-
-	if (sumaTotal % 10 == 0) return true;
-	else return false;
-}
-
-int main() {
-	int tarjeta[16];
+	/*
+		int tarjeta[16];
 	int tamano = sizeof(tarjeta) / sizeof(tarjeta[0]);
 
 	if (algoritmoDeLuhn(tarjeta, tamano)) {
 		cout << "La tarjeta es valida";
 	}
 	else cout << "La tarjeta es invalida";
+	*/
 
-	//4126 9428 8307 9448
+	int sumaTotal= primeraSuma + segundaSuma;
+
+	if (sumaTotal % 10 == 0) return true;
+	else return false;
+
+
+}
+
+void parcticaDememoriaDinamica() {
+	int* pPuntero = NULL;
+	int n;
+	cout << "Ingrese la cantidad de elemntos que quiere almacenar: "; cin >> n;
+	pPuntero = new int[n];
+
+	for (int i = 0; i < n; i++) {
+		cin >> pPuntero[i];
+	}
+
+	for (int i = 0; i < n; i++) {
+		cout<< pPuntero[i]<<" ";
+	}
+
+}
+
+int main() {
+	int* pNumero = NULL;;
+	int numero[4] = { 1,2,3,4 };
+	pNumero = numero;
+	int tamano = sizeof(numero);
+	int suma=0;
 	
+	
+	for (int i = 0; i<4; i++) {
+		
+		cout << *pNumero<<endl;
+		pNumero+=1;
+	}
+for (int i = 0; i < tamano; i ++) {
+		pNumero += i;
+		suma += sizeof * (pNumero);
+	}
 
 	cin.get();
 	return 0;
