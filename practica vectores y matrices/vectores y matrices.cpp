@@ -330,10 +330,7 @@ void parcticaDememoriaDinamica() {
 }
 
 int main() {
-	int arreglo[3] = { 0,1,2 };
-	int* p = NULL;
-	p = &arreglo[2];
-	cout << p[0];
+
 	cin.get();
 	return 0;
 }
